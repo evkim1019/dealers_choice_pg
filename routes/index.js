@@ -14,7 +14,6 @@ router.get('/', async(req, res) => {
 router.get('/:id', async(req, res) => {
   try{
     const data = await client.query('SELECT * FROM zoo WHERE zoo.id = $1', [req.params.id]);
-    console.log(data.rows[0]);
     res.send(animalDetails(data.rows[0]));
   } catch(error){console.log(error)}
 });
